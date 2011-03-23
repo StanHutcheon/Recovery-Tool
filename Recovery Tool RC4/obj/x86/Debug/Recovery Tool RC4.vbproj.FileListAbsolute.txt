@@ -1,0 +1,4 @@
+C:\Users\Stan\Desktop\Stuff\Recovery Tool RC4 Source\Recovery Tool RC4\bin\Debug\Recovery Tool RC4.exe.config
+C:\Users\Stan\Desktop\Stuff\Recovery Tool RC4 Source\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.exe
+C:\Users\Stan\Desktop\Stuff\Recovery Tool RC4 Source\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.xml
+C:\Users\Stan\Desktop\Stuff\Recovery Tool RC4 Source\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.pdb
