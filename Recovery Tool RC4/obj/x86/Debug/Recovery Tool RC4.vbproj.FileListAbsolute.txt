@@ -2,3 +2,11 @@ C:\Users\Stan\Desktop\Stuff\Recovery Tool RC4 Source\Recovery Tool RC4\bin\Debug
 C:\Users\Stan\Desktop\Stuff\Recovery Tool RC4 Source\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.exe
 C:\Users\Stan\Desktop\Stuff\Recovery Tool RC4 Source\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.xml
 C:\Users\Stan\Desktop\Stuff\Recovery Tool RC4 Source\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.pdb
+C:\Users\Stan\Downloads\StanTheRipper-Recovery-Tool-9eda586\StanTheRipper-Recovery-Tool-9eda586\Recovery Tool RC4\bin\Debug\Recovery Tool RC4.exe.config
+C:\Users\Stan\Downloads\StanTheRipper-Recovery-Tool-9eda586\StanTheRipper-Recovery-Tool-9eda586\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.exe
+C:\Users\Stan\Downloads\StanTheRipper-Recovery-Tool-9eda586\StanTheRipper-Recovery-Tool-9eda586\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.xml
+C:\Users\Stan\Downloads\StanTheRipper-Recovery-Tool-9eda586\StanTheRipper-Recovery-Tool-9eda586\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.pdb
+C:\Users\Stan\repo\rec-2\Recovery Tool RC4\bin\Debug\Recovery Tool RC4.exe.config
+C:\Users\Stan\repo\rec-2\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.exe
+C:\Users\Stan\repo\rec-2\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.xml
+C:\Users\Stan\repo\rec-2\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.pdb

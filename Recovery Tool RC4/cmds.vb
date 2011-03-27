@@ -2,6 +2,8 @@
 Module cmds
     Public RecoveryToolVersion As String = "RC4 -2"
     Public UpdateVersion As String = ""
+    Public SystemBit As String = ""
+    Public iTunesStatus As String = ""
     Public RecoveryConnected As Boolean = False
     Dim temp = My.Computer.FileSystem.SpecialDirectories.Temp
 
@@ -31,10 +33,10 @@ Module cmds
         If System.Environment.Is64BitOperatingSystem.ToString = True Then
 
             'x64 Code
-            My.Settings.system = "x64"
+            SystemBit = "x64"
             If System.IO.Directory.Exists("C:\Program Files (x86)\iTunes") Then
             Else
-                My.Settings.itunesstatusx64 = "Not Installed"
+                iTunesStatus = "Not Installed"
             End If
             System.IO.File.WriteAllBytes("C:\Program Files (x86)\Common Files\Apple\Apple Application Support\iPHUCWIN32.exe", My.Resources.IPHUCWIN32)
             System.IO.File.WriteAllBytes("C:\Program Files (x86)\Common Files\Apple\Apple Application Support\readline5.dll", My.Resources.readline5)
@@ -47,10 +49,10 @@ Module cmds
         Else
 
             'X86 Code
-            My.Settings.system = "x86"
+            SystemBit = "x86"
             If System.IO.Directory.Exists("C:\Program Files\iTunes") Then
             Else
-                My.Settings.itunesstatusx86 = "Not Installed"
+                iTunesStatus = "Not Installed"
             End If
             System.IO.File.WriteAllBytes("C:\Program Files\Common Files\Apple\Apple Application Support\iPHUCWIN32.exe", My.Resources.IPHUCWIN32)
             System.IO.File.WriteAllBytes("C:\Program Files\Common Files\Apple\Apple Application Support\readline5.dll", My.Resources.readline5)
@@ -63,14 +65,14 @@ Module cmds
         End If
 
 
-        If My.Settings.system = "x86" And My.Settings.itunesstatusx86 = "Not Installed" Then 'Epic Fail
+        If SystemBit = "x86" And iTunesStatus = "Not Installed" Then 'Epic Fail
             Form1.PictureBox1.Visible = True
             Form1.Button1.Enabled = False
             Form1.Button2.Enabled = False
             Form1.Label3.Visible = True
         End If
 
-        If My.Settings.system = "x64" And My.Settings.itunesstatusx64 = "Not Installed" Then 'Epic Fail
+        If SystemBit = "x64" And iTunesStatus = "Not Installed" Then 'Epic Fail
             Form1.PictureBox1.Visible = True
             Form1.Label3.Visible = True
             Form1.Button1.Enabled = False

@@ -24,14 +24,14 @@ Public Class Form1
             Select Case LCase(a_strArgs(i))
                 Case "-e"
                     Me.ShowInTaskbar = False
-                    If My.Settings.system = "x64" Then
-                        If My.Settings.itunesstatusx64 = "Not Installed" Then
+                    If SystemBit = "x64" Then
+                        If iTunesStatus = "Not Installed" Then
                             MsgBox("You need iTunes installed")
                             Me.Close()
                         End If
                         EnterRecoveryx64()
-                    ElseIf My.Settings.system = "x86" Then
-                        If My.Settings.itunesstatusx86 = "Not Installed" Then
+                    ElseIf SystemBit = "x86" Then
+                        If iTunesStatus = "Not Installed" Then
                             MsgBox("You need iTunes installed")
                             Me.Close()
                         End If
