@@ -11,6 +11,7 @@ Module cmds
         Dim temp As String
         temp = My.Computer.FileSystem.SpecialDirectories.Temp
 
+
         Dim recovery As String
         recovery = temp & "\StanTheRipper\Recovery"
 

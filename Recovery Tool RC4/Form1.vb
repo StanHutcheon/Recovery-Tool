@@ -17,6 +17,7 @@ Public Class Form1
         DetectiTunes()
         Dim a_strArgs() As String
 
+
         Dim i As Integer
 
         a_strArgs = Split(Command$, " ")
