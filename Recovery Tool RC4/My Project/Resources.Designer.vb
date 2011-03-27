@@ -67,6 +67,13 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property ituneslogo() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("ituneslogo", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property itunnel_mux_r61() As Byte()
             Get
                 Dim obj As Object = ResourceManager.GetObject("itunnel_mux_r61", resourceCulture)
@@ -84,13 +91,6 @@ Namespace My.Resources
         Friend ReadOnly Property recbackground() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("recbackground", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property Untitled_1() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Untitled-1", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

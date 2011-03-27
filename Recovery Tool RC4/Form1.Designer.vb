@@ -84,7 +84,7 @@ Partial Class Form1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox1.Image = Global.Recovery_Tool_RC4.My.Resources.Resources.Untitled_1
+        Me.PictureBox1.Image = Global.Recovery_Tool_RC4.My.Resources.Resources.ituneslogo
         Me.PictureBox1.Location = New System.Drawing.Point(184, 60)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(72, 71)
