@@ -1,11 +1,30 @@
 ﻿Imports System.Management
 Module cmds
-    Public RecoveryToolVersion As String = "RC4 -2"
+    Public RecoveryToolVersion As String = "RC4 -3"
     Public UpdateVersion As String = ""
     Public SystemBit As String = ""
-    Public iTunesStatus As String = ""
+    Public iTunesStatus As Boolean
     Public RecoveryConnected As Boolean = False
+    Public irecovery As Process = New Process
     Dim temp = My.Computer.FileSystem.SpecialDirectories.Temp
+    Private Property winstyle As ProcessWindowStyle
+
+    Public Sub ShellWait(ByVal file As String, ByVal arg As String)
+        Dim procNlite As New Process
+        winstyle = 1
+        procNlite.StartInfo.FileName = file
+        procNlite.StartInfo.Arguments = " " & arg
+        procNlite.StartInfo.WindowStyle = winstyle
+        Application.DoEvents()
+        procNlite.Start()
+        Do Until procNlite.HasExited
+            Application.DoEvents()
+            For i = 0 To 5000000
+                Application.DoEvents()
+            Next
+        Loop
+        procNlite.WaitForExit()
+    End Sub
 
     Public Sub Prep()
         Dim temp As String
@@ -36,8 +55,11 @@ Module cmds
             'x64 Code
             SystemBit = "x64"
             If System.IO.Directory.Exists("C:\Program Files (x86)\iTunes") Then
+                iTunesStatus = True
             Else
-                iTunesStatus = "Not Installed"
+                MsgBox("iTunes is required for this program to function properly" & vbCrLf & vbCrLf & "Error Code: 1" & vbCrLf & "iTunes missing", MsgBoxStyle.Exclamation, "Recovery Tool | Error")
+                iTunesStatus = False
+                Form1.Close()
             End If
             System.IO.File.WriteAllBytes("C:\Program Files (x86)\Common Files\Apple\Apple Application Support\iPHUCWIN32.exe", My.Resources.IPHUCWIN32)
             System.IO.File.WriteAllBytes("C:\Program Files (x86)\Common Files\Apple\Apple Application Support\readline5.dll", My.Resources.readline5)
@@ -52,8 +74,11 @@ Module cmds
             'X86 Code
             SystemBit = "x86"
             If System.IO.Directory.Exists("C:\Program Files\iTunes") Then
+                iTunesStatus = True
             Else
-                iTunesStatus = "Not Installed"
+                MsgBox("iTunes is required for this program to function properly" & vbCrLf & vbCrLf & "Error Code: 1" & vbCrLf & "iTunes missing", MsgBoxStyle.Exclamation, "Recovery Tool | Error")
+                iTunesStatus = False
+                Form1.Close()
             End If
             System.IO.File.WriteAllBytes("C:\Program Files\Common Files\Apple\Apple Application Support\iPHUCWIN32.exe", My.Resources.IPHUCWIN32)
             System.IO.File.WriteAllBytes("C:\Program Files\Common Files\Apple\Apple Application Support\readline5.dll", My.Resources.readline5)
@@ -66,40 +91,21 @@ Module cmds
         End If
 
 
-        If SystemBit = "x86" And iTunesStatus = "Not Installed" Then 'Epic Fail
+        If iTunesStatus = False Then 'Epic Fail
+            Form1.CheckBox1.Visible = False
             Form1.PictureBox1.Visible = True
             Form1.Button1.Enabled = False
             Form1.Button2.Enabled = False
             Form1.Label3.Visible = True
-        End If
-
-        If SystemBit = "x64" And iTunesStatus = "Not Installed" Then 'Epic Fail
-            Form1.PictureBox1.Visible = True
-            Form1.Label3.Visible = True
-            Form1.Button1.Enabled = False
-            Form1.Button2.Enabled = False
         End If
     End Sub
 
 
     Public Sub EnterRecoveryx86()
-        Form1.searchingstatus.Visible = True
-        Form1.idlestatus.Visible = False
-        Form1.detectedstatus.Visible = False
         Form1.Button1.Enabled = False
         Form1.Button2.Enabled = False
         Form1.Button1.Text = "Entering Recovery"
-        Form1.Delay(1)
-        Dim ProcessPropertiesenter As New ProcessStartInfo
-        ProcessPropertiesenter.FileName = "C:\Program Files\Common Files\Apple\Apple Application Support\iPHUCWIN32.exe"
-        ProcessPropertiesenter.Arguments = "-qo enterrecovery"
-        ProcessPropertiesenter.WindowStyle = ProcessWindowStyle.Hidden
-        Dim myProcessenter As Process = Process.Start(ProcessPropertiesenter)
-        myProcessenter.WaitForExit(8000)
-        If Not myProcessenter.HasExited Then
-            myProcessenter.Kill()
-        End If
-        Threading.Thread.Sleep(1)
+        ShellWait("C:\Program Files\Common Files\Apple\Apple Application Support\iPHUCWIN32.exe", "-qo enterrecovery")
         Form1.Button1.Text = "Entered Recovery"
         Form1.Delay(2)
         Form1.Button1.Text = "Enter Recovery"
@@ -108,23 +114,10 @@ Module cmds
     End Sub
 
     Public Sub EnterRecoveryx64()
-        Form1.searchingstatus.Visible = True
-        Form1.idlestatus.Visible = False
-        Form1.detectedstatus.Visible = False
         Form1.Button1.Enabled = False
         Form1.Button2.Enabled = False
         Form1.Button1.Text = "Entering Recovery"
-        Form1.Delay(1)
-        Dim ProcessProperties As New ProcessStartInfo
-        ProcessProperties.FileName = "C:\Program Files (x86)\Common Files\Apple\Apple Application Support\iPHUCWIN32.exe"
-        ProcessProperties.Arguments = "-qo enterrecovery"
-        ProcessProperties.WindowStyle = ProcessWindowStyle.Hidden
-        Dim myProcess As Process = Process.Start(ProcessProperties)
-        myProcess.WaitForExit(8000)
-        If Not myProcess.HasExited Then
-            myProcess.Kill()
-        End If
-        Threading.Thread.Sleep(1)
+        ShellWait("C:\Program Files (x86)\Common Files\Apple\Apple Application Support\iPHUCWIN32.exe", "-qo enterrecovery")
         Form1.Button1.Text = "Entered Recovery"
         Form1.Delay(2)
         Form1.Button1.Text = "Enter Recovery"
@@ -142,17 +135,31 @@ Module cmds
         Form1.Button1.Enabled = False
         Form1.Button2.Enabled = False
         Form1.Button2.Text = "Exiting Recovery"
-        Form1.Delay(1)
         Dim ProcessProperties As New ProcessStartInfo
         ProcessProperties.FileName = recovery & "\itunnel.exe"
         ProcessProperties.Arguments = "--autoboot"
         ProcessProperties.WindowStyle = ProcessWindowStyle.Hidden
         Dim myProcess As Process = Process.Start(ProcessProperties)
-        myProcess.WaitForExit(8000)
+        myProcess.WaitForExit(6000)
         If Not myProcess.HasExited Then
             myProcess.Kill()
         End If
         Threading.Thread.Sleep(1)
+        Form1.Button2.Text = "Exited Recovery"
+        Form1.Delay(2)
+        Form1.Button2.Text = "Exit Recovery"
+        Form1.Button1.Enabled = True
+        Form1.Button2.Enabled = True
+    End Sub
+
+    Public Sub ExitRecoveryiRecovery()
+        ChDir(temp)
+        Form1.Button1.Enabled = False
+        Form1.Button2.Enabled = False
+        Form1.Button2.Text = "Exiting Recovery"
+        System.IO.File.WriteAllBytes(temp & "\irecovery.exe", My.Resources.s_irecovery)
+        System.IO.File.WriteAllBytes(temp & "\exitrec.bat", My.Resources.exitrec)
+        ExecCmd(temp & "\exitrec.bat", True)
         Form1.Button2.Text = "Exited Recovery"
         Form1.Delay(2)
         Form1.Button2.Text = "Exit Recovery"
@@ -168,13 +175,13 @@ Module cmds
             System.IO.File.Delete(temp & "\recoveryversion.xml")
         End If
         Try
-            My.Computer.Network.DownloadFile("http://stantheripper.com/recoveryversion.lol", temp & "\recoveryversion.xml")
+            My.Computer.Network.DownloadFile("http://stantheripper.com/u/recoverytool.stan", temp & "\recoveryversion.xml")
             UpdateVersion = My.Computer.FileSystem.ReadAllText(temp & "\recoveryversion.xml")
             If Not RecoveryToolVersion = UpdateVersion Then
                 If Not My.Settings.showupdatemessage = "No" Then
                     Dim answer = MsgBox("Update available!" & vbCrLf & vbCrLf & "Version: " & UpdateVersion & vbCrLf & "Would you like to download?", vbYesNo)
                     If answer = vbYes Then
-                        System.Diagnostics.Process.Start("http://recovery.stantheripper.com")
+                        System.Diagnostics.Process.Start("http://recovery.stantheripper.com/download.php")
                     End If
 
                     If answer = vbNo Then

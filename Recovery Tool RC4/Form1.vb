@@ -1,6 +1,8 @@
 ﻿Imports System.Management
 
 Public Class Form1
+    Public iRecoveryChecked As Boolean = False
+
     Sub Delay(ByVal dblSecs As Double)
 
         Const OneSec As Double = 1.0# / (1440.0# * 60.0#)
@@ -13,8 +15,10 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Prep()
         DetectiTunes()
+        CheckForUpdate()
+        Show()
+        Prep()
         Dim a_strArgs() As String
 
 
@@ -24,6 +28,7 @@ Public Class Form1
         For i = LBound(a_strArgs) To UBound(a_strArgs)
             Select Case LCase(a_strArgs(i))
                 Case "-e"
+                    Hide()
                     Me.ShowInTaskbar = False
                     If SystemBit = "x64" Then
                         If iTunesStatus = "Not Installed" Then
@@ -32,7 +37,7 @@ Public Class Form1
                         End If
                         EnterRecoveryx64()
                     ElseIf SystemBit = "x86" Then
-                        If iTunesStatus = "Not Installed" Then
+                        If iTunesStatus = False Then
                             MsgBox("You need iTunes installed")
                             Me.Close()
                         End If
@@ -40,6 +45,7 @@ Public Class Form1
                     End If
                     Me.Close()
                 Case "-x"
+                    Hide()
                     Me.ShowInTaskbar = False
                     ExitRecovery()
                     Me.Close()
@@ -49,15 +55,17 @@ Public Class Form1
                     MsgBox("-h = Opens this window" & vbCrLf & "-e = Enter Recovery Mode" & vbCrLf & "-x = Exit Recovery Mode" & vbCrLf & "-d = Simulates iTunes not being installed (for diagnostics only)")
                     Me.Close()
                 Case ""
-                    CheckForUpdate()
+                    Show()
                 Case "-d"
                     'diags mode
-                    My.Settings.itunesstatusx64 = "Not Installed"
-                    My.Settings.itunesstatusx86 = "Not Installed"
+                    iTunesStatus = False
+                    CheckBox1.Visible = False
                     PictureBox1.Visible = True
                     Label3.Visible = True
                     Button1.Enabled = False
                     Button2.Enabled = False
+                    MsgBox("iTunes is required for this program to function properly" & vbCrLf & vbCrLf & "Error Code: 1" & vbCrLf & "iTunes missing", MsgBoxStyle.Exclamation)
+                    Close()
                 Case Else
                     MsgBox("Invalid argument")
                     Me.Close()
@@ -69,35 +77,37 @@ Public Class Form1
         FormBorderStyle = Windows.Forms.FormBorderStyle.FixedSingle
         HelpButton = True
         Label1.Select()
-        searchingstatus.Visible = False
-        detectedstatus.Visible = False
-        My.Settings.itunesstatusx64 = ""
-        My.Settings.itunesstatusx86 = ""
     End Sub
 
     'Enter Recovery
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        If My.Settings.itunesstatusx64 = "Not Installed" Or My.Settings.itunesstatusx86 = "Not Installed" Then
-            MsgBox("iTunes is required to enter recovery")
+        If iTunesStatus = False Then
+            MsgBox("iTunes is required to enter recovery" & vbCrLf & vbCrLf & "Error Code: 1" & vbCrLf & "iTunes missing", MsgBoxStyle.Exclamation)
             Exit Sub
         Else
-            If My.Settings.system = "x64" Then
+            CheckBox1.Enabled = False
+            If SystemBit = "x64" Then
                 EnterRecoveryx64()
             End If
 
-            If My.Settings.system = "x86" Then
+            If SystemBit = "x86" Then
                 EnterRecoveryx86()
             End If
+            CheckBox1.Enabled = True
         End If
     End Sub
 
     'Exit Recovery
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        If My.Settings.itunesstatusx64 = "Not Installed" Or My.Settings.itunesstatusx86 = "Not Installed" Then
-            MsgBox("iTunes is required to exit recovery")
+        If iTunesStatus = False Then
+            MsgBox("iTunes is required to exit recovery" & vbCrLf & vbCrLf & "Error Code: 1" & vbCrLf & "iTunes missing", MsgBoxStyle.Exclamation)
             Exit Sub
+        ElseIf iRecoveryChecked = True Then
+            ExitRecoveryiRecovery()
         Else
+            CheckBox1.Enabled = False
             ExitRecovery()
+            CheckBox1.Enabled = True
         End If
     End Sub
 
@@ -148,6 +158,25 @@ Public Class Form1
 
     Private Sub LinkLabel1_HelpRequested(ByVal sender As System.Object, ByVal hlpevent As System.Windows.Forms.HelpEventArgs)
         MsgBox("This label will take you to my site", MsgBoxStyle.Information, "Recovery Tool | Help")
+    End Sub
+
+    Private Sub CheckBox1_HelpRequested(ByVal sender As System.Object, ByVal hlpevent As System.Windows.Forms.HelpEventArgs) Handles CheckBox1.HelpRequested
+        MsgBox("Check this box to exit recovery using irecovery" & vbCrLf & "Only use this method if the other method isn't working", MsgBoxStyle.Information, "Recovery Tool | Help")
+    End Sub
+
+    Private Sub PictureBox1_HelpRequested(ByVal sender As System.Object, ByVal hlpevent As System.Windows.Forms.HelpEventArgs) Handles PictureBox1.HelpRequested
+        MsgBox("Click to download iTunes." & vbCrLf & "This is being displayed because you need iTunes installed to enter and exit recovery", MsgBoxStyle.Information, "Recovery Tool | Help")
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckBox1.CheckedChanged
+        If CheckBox1.Checked = True Then
+            iRecoveryChecked = True
+            MsgBox("This is used to exit recovery, it is alot more faster than iPHUC (default)" & vbCrLf & _
+                   "Thanks to iH8sn0w for the iRecovery Build")
+        End If
+        If CheckBox1.Checked = False Then
+            iRecoveryChecked = False
+        End If
     End Sub
 
     Private Sub Label3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label3.Click

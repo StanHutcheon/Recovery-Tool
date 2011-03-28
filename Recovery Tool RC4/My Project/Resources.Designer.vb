@@ -60,6 +60,13 @@ Namespace My.Resources
             End Set
         End Property
         
+        Friend ReadOnly Property exitrec() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("exitrec", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
         Friend ReadOnly Property IPHUCWIN32() As Byte()
             Get
                 Dim obj As Object = ResourceManager.GetObject("IPHUCWIN32", resourceCulture)
@@ -92,6 +99,13 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("recbackground", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property s_irecovery() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("s_irecovery", resourceCulture)
+                Return CType(obj,Byte())
             End Get
         End Property
     End Module

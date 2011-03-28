@@ -30,16 +30,14 @@ Partial Class Form1
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.console = New System.Windows.Forms.RichTextBox()
-        Me.idlestatus = New System.Windows.Forms.Label()
-        Me.detectedstatus = New System.Windows.Forms.Label()
-        Me.searchingstatus = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(12, 74)
+        Me.Button1.Location = New System.Drawing.Point(12, 58)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(145, 73)
         Me.Button1.TabIndex = 0
@@ -49,7 +47,7 @@ Partial Class Form1
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(283, 74)
+        Me.Button2.Location = New System.Drawing.Point(283, 58)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(145, 73)
         Me.Button2.TabIndex = 1
@@ -72,11 +70,11 @@ Partial Class Form1
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(144, 37)
+        Me.Label2.Location = New System.Drawing.Point(159, 37)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(152, 18)
+        Me.Label2.Size = New System.Drawing.Size(122, 13)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "By StanTheRipper"
         '
@@ -85,7 +83,7 @@ Partial Class Form1
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox1.Image = Global.Recovery_Tool_RC4.My.Resources.Resources.ituneslogo
-        Me.PictureBox1.Location = New System.Drawing.Point(184, 60)
+        Me.PictureBox1.Location = New System.Drawing.Point(182, 49)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(72, 71)
         Me.PictureBox1.TabIndex = 5
@@ -98,7 +96,7 @@ Partial Class Form1
         Me.Label3.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Label3.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label3.Location = New System.Drawing.Point(185, 134)
+        Me.Label3.Location = New System.Drawing.Point(184, 118)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(73, 13)
         Me.Label3.TabIndex = 6
@@ -113,44 +111,18 @@ Partial Class Form1
         Me.console.Text = ""
         Me.console.Visible = False
         '
-        'idlestatus
+        'CheckBox1
         '
-        Me.idlestatus.AutoSize = True
-        Me.idlestatus.BackColor = System.Drawing.Color.Transparent
-        Me.idlestatus.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.idlestatus.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.idlestatus.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.idlestatus.Location = New System.Drawing.Point(179, 163)
-        Me.idlestatus.Name = "idlestatus"
-        Me.idlestatus.Size = New System.Drawing.Size(83, 13)
-        Me.idlestatus.TabIndex = 8
-        Me.idlestatus.Text = "Status: Idle"
-        '
-        'detectedstatus
-        '
-        Me.detectedstatus.AutoSize = True
-        Me.detectedstatus.BackColor = System.Drawing.Color.Transparent
-        Me.detectedstatus.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.detectedstatus.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.detectedstatus.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.detectedstatus.Location = New System.Drawing.Point(103, 163)
-        Me.detectedstatus.Name = "detectedstatus"
-        Me.detectedstatus.Size = New System.Drawing.Size(234, 13)
-        Me.detectedstatus.TabIndex = 9
-        Me.detectedstatus.Text = "Status: Recovery Device Detected"
-        '
-        'searchingstatus
-        '
-        Me.searchingstatus.AutoSize = True
-        Me.searchingstatus.BackColor = System.Drawing.Color.Transparent
-        Me.searchingstatus.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.searchingstatus.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.searchingstatus.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.searchingstatus.Location = New System.Drawing.Point(115, 163)
-        Me.searchingstatus.Name = "searchingstatus"
-        Me.searchingstatus.Size = New System.Drawing.Size(210, 13)
-        Me.searchingstatus.TabIndex = 10
-        Me.searchingstatus.Text = "Status: Searching For Recovery"
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.BackColor = System.Drawing.Color.Transparent
+        Me.CheckBox1.Font = New System.Drawing.Font("Lucida Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.CheckBox1.Location = New System.Drawing.Point(175, 114)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(90, 17)
+        Me.CheckBox1.TabIndex = 8
+        Me.CheckBox1.Text = "iRecovery"
+        Me.CheckBox1.UseVisualStyleBackColor = False
         '
         'Form1
         '
@@ -158,14 +130,12 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImage = Global.Recovery_Tool_RC4.My.Resources.Resources.recbackground
-        Me.ClientSize = New System.Drawing.Size(440, 159)
-        Me.Controls.Add(Me.searchingstatus)
-        Me.Controls.Add(Me.detectedstatus)
-        Me.Controls.Add(Me.idlestatus)
+        Me.ClientSize = New System.Drawing.Size(440, 140)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.console)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -177,7 +147,7 @@ Partial Class Form1
         Me.MinimizeBox = False
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Recovery Tool RC4 -2"
+        Me.Text = "Recovery Tool RC4 -3"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -190,8 +160,6 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents console As System.Windows.Forms.RichTextBox
-    Friend WithEvents idlestatus As System.Windows.Forms.Label
-    Friend WithEvents detectedstatus As System.Windows.Forms.Label
-    Friend WithEvents searchingstatus As System.Windows.Forms.Label
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
 
 End Class

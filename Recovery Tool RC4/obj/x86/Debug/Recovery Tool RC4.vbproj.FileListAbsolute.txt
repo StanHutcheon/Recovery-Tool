@@ -10,3 +10,15 @@ C:\Users\Stan\repo\rec-2\Recovery Tool RC4\bin\Debug\Recovery Tool RC4.exe.confi
 C:\Users\Stan\repo\rec-2\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.exe
 C:\Users\Stan\repo\rec-2\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.xml
 C:\Users\Stan\repo\rec-2\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.pdb
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\bin\Debug\Recovery Tool RC4.exe.config
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.exe
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.xml
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\obj\x86\Debug\Recovery Tool RC4.pdb
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\obj\x86\Debug\Recovery_Tool_RC4.Form1.resources
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\obj\x86\Debug\Recovery_Tool_RC4.Resources.resources
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\bin\Debug\Recovery Tool RC4.exe
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\bin\Debug\Recovery Tool RC4.pdb
+C:\Users\Stan\repo\Rec2\Recovery Tool RC4\bin\Debug\Recovery Tool RC4.xml

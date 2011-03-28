@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="exitrec" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exitrec.stan;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="IPHUCWIN32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IPHUCWIN32.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -132,5 +135,8 @@
   </data>
   <data name="recbackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\recbackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="s_irecovery" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\s-irecovery.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
